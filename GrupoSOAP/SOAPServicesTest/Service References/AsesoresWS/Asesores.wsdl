@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Asesores" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:20000/Asesores.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:20000/Asesores.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:20000/Asesores.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SOAPServices.Dominio" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAsesores_CrearAsesor_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearAsesor" />
+  </wsdl:message>
+  <wsdl:message name="IAsesores_CrearAsesor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearAsesorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsesores_ObtenerAsesor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAsesor" />
+  </wsdl:message>
+  <wsdl:message name="IAsesores_ObtenerAsesor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerAsesorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsesores_ModificarAsesor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarAsesor" />
+  </wsdl:message>
+  <wsdl:message name="IAsesores_ModificarAsesor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarAsesorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsesores_EliminaAsesor_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminaAsesor" />
+  </wsdl:message>
+  <wsdl:message name="IAsesores_EliminaAsesor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminaAsesorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAsesores_ListarAsesores_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAsesores" />
+  </wsdl:message>
+  <wsdl:message name="IAsesores_ListarAsesores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAsesoresResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAsesores">
+    <wsdl:operation name="CrearAsesor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsesores/CrearAsesor" message="tns:IAsesores_CrearAsesor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsesores/CrearAsesorResponse" message="tns:IAsesores_CrearAsesor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAsesor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsesores/ObtenerAsesor" message="tns:IAsesores_ObtenerAsesor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsesores/ObtenerAsesorResponse" message="tns:IAsesores_ObtenerAsesor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarAsesor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsesores/ModificarAsesor" message="tns:IAsesores_ModificarAsesor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsesores/ModificarAsesorResponse" message="tns:IAsesores_ModificarAsesor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminaAsesor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsesores/EliminaAsesor" message="tns:IAsesores_EliminaAsesor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsesores/EliminaAsesorResponse" message="tns:IAsesores_EliminaAsesor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAsesores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAsesores/ListarAsesores" message="tns:IAsesores_ListarAsesores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAsesores/ListarAsesoresResponse" message="tns:IAsesores_ListarAsesores_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAsesores" type="tns:IAsesores">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CrearAsesor">
+      <soap:operation soapAction="http://tempuri.org/IAsesores/CrearAsesor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerAsesor">
+      <soap:operation soapAction="http://tempuri.org/IAsesores/ObtenerAsesor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarAsesor">
+      <soap:operation soapAction="http://tempuri.org/IAsesores/ModificarAsesor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminaAsesor">
+      <soap:operation soapAction="http://tempuri.org/IAsesores/EliminaAsesor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAsesores">
+      <soap:operation soapAction="http://tempuri.org/IAsesores/ListarAsesores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Asesores">
+    <wsdl:port name="BasicHttpBinding_IAsesores" binding="tns:BasicHttpBinding_IAsesores">
+      <soap:address location="http://localhost:20000/Asesores.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
