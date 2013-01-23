@@ -43,6 +43,69 @@ namespace AplicacionWebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Create() //Muestra pagina para crear datos de creacion 
+        {
+            return View();
+        }
+
+        public ActionResult Delete(int id) //Muestra pagina para confirmar eliminacion
+        {
+            Articulo model = ObtenerArticulo(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection) //Recibe Datos de formulario y realiza modificacion
+        {
+            try
+            {
+                Articulo model = ObtenerArticulo(id);
+                model.Nombre = collection["Nombre"];
+                model.Descripcion = collection["Descripcion"];
+
+                AdmProductoWS.Articulo o = 
+                    proxyProducto.modificar(model.Codigo, model.Nombre, model.Descripcion, model.Categoria.Codigo);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Create(FormCollection collection) //Recibe los datos del formulario y realiza creacion
+        {
+            try
+            {
+                AdmProductoWS.Articulo o = 
+                    proxyProducto.crear(collection["Nombre"], collection["Descripcion"], int.Parse(collection["Categoria.Codigo"]));
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection) //realiza la eliminacion
+        {
+            try
+            {
+                Articulo model = ObtenerArticulo(id);
+                AdmProductoWS.Articulo o = new AdmProductoWS.Articulo() { Codigo = model.Codigo };
+                proxyProducto.eliminar(o);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         private Articulo ObtenerArticulo(int Codigo)
         {
             Articulo model;
@@ -58,7 +121,8 @@ namespace AplicacionWebMVC.Controllers
 
             return model;
         }
-
+        
+        /*
         private List<Articulo> CrearArticulos()
         {
 
@@ -72,96 +136,7 @@ namespace AplicacionWebMVC.Controllers
             articulos.Add(new Articulo() { Codigo = 3, Nombre = "Pasta Ocre", Descripcion = "Color para pintura", Categoria = Pastas });
 
             return articulos;
-        }
-
-        //
-        // GET: /Articulo/Create
-
-        public ActionResult Create() //Muestra pagina para crear datos de creacion 
-        {
-            return View();
-        }
-
-        //
-        // POST: /Articulo/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection) //Recibe los datos del formulario y realiza creacion
-        {
-            try
-            {
-
-                List<Articulo> Articulos = (List<Articulo>)Session["articulos"];
-                Articulos.Add(new Articulo()
-                    {
-                        Codigo = int.Parse(collection["Codigo"]),
-                        Nombre = collection["Nombre"],
-                        Descripcion = collection["Descripcion"],
-                        Categoria = new Categoria()
-                        {
-                            Codigo = int.Parse(collection["Categorias.Codigo"]),
-                            Nombre = collection["Categorias.Nombre"]
-
-                        }
-
-                    });
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // POST: /Articulo/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection) //Recibe Datos de formulario y realiza modificacion
-        {
-            try
-            {
-                Articulo model = ObtenerArticulo(id);
-                model.Nombre = collection["Nombre"];
-                model.Descripcion = collection["Descripcion"];
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Articulo/Delete/5       
-
-        public ActionResult Delete(int id) //Muestra pagina para confirmar eliminacion
-        {
-
-            Articulo model = ObtenerArticulo(id);
-
-            return View(model);
-        }
-
-        //
-        // POST: /Articulo/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection) //realiza la eliminacion
-        {
-            try
-            {
-                List<Articulo> Articulos = (List<Articulo>)Session["articulos"];
-                Articulos.Remove(ObtenerArticulo(id));
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        }       
+        */
     }
 }
