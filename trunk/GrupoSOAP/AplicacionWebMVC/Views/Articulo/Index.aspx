@@ -43,7 +43,7 @@
                 <%: item.Descripcion %>
             </td>
             <td>
-                <%: item.Categorias.Codigo %> - <%: item.Categorias.Nombre %>
+                <%: item.Categoria.Codigo %> - <%: item.Categoria.Nombre %>
             </td>
         </tr>
     

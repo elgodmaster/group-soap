@@ -39,19 +39,11 @@
             </div>
 
                <div class="editor-label" style="color: #003399">
-                <%: Html.LabelFor(model => model.Categorias.Codigo) %>
+                <%: Html.LabelFor(model => model.Categoria.Codigo) %>
             </div>
             <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Categorias.Codigo) %>
-                <%: Html.ValidationMessageFor(model => model.Categorias.Codigo) %>
-            </div>
-
-               <div class="editor-label" style="color: #003399">
-                <%: Html.LabelFor(model => model.Categorias.Nombre) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(model => model.Categorias.Nombre) %>
-                <%: Html.ValidationMessageFor(model => model.Categorias.Nombre) %>
+                <%: Html.TextBoxFor(model => model.Categoria.Codigo) %>
+                <%: Html.ValidationMessageFor(model => model.Categoria.Codigo) %>
             </div>
             
             <p>
