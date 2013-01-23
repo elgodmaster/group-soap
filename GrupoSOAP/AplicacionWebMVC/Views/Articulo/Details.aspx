@@ -21,7 +21,7 @@
         <div class="display-field"><%: Model.Descripcion %></div>
 
         <div class="display-label" style="color: #003399">Categoria:</div>
-        <div class="display-field"><%: Model.Categorias.Codigo %> - <%: Model.Categorias.Nombre %> </div>
+        <div class="display-field"><%: Model.Categoria.Codigo %> - <%: Model.Categoria.Nombre %> </div>
         
     </fieldset>
     <p>
