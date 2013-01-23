@@ -8,15 +8,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplicacionWebMVC", "Aplicac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWS", "AppWS\AppWS.csproj", "{2CC4D850-8E33-4D5F-BB5D-2D7AD2768CF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOAPServices", "SOAPServices\SOAPServices.csproj", "{D3913F50-A074-4E89-A24A-EF949573C75D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{6749174A-E427-4AB7-AF44-AC93ECB9922C}"
 	ProjectSection(SolutionItems) = preProject
 		lib\Iesi.Collections.dll = lib\Iesi.Collections.dll
 		lib\NHibernate.dll = lib\NHibernate.dll
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOAPServicesTest", "SOAPServicesTest\SOAPServicesTest.csproj", "{69AE165B-F824-4238-B476-A89D4C9CD090}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -36,14 +32,6 @@ Global
 		{2CC4D850-8E33-4D5F-BB5D-2D7AD2768CF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CC4D850-8E33-4D5F-BB5D-2D7AD2768CF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CC4D850-8E33-4D5F-BB5D-2D7AD2768CF8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3913F50-A074-4E89-A24A-EF949573C75D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3913F50-A074-4E89-A24A-EF949573C75D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3913F50-A074-4E89-A24A-EF949573C75D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3913F50-A074-4E89-A24A-EF949573C75D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69AE165B-F824-4238-B476-A89D4C9CD090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69AE165B-F824-4238-B476-A89D4C9CD090}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69AE165B-F824-4238-B476-A89D4C9CD090}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69AE165B-F824-4238-B476-A89D4C9CD090}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
