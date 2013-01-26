@@ -39,7 +39,7 @@
             </div>
 
                <div class="editor-label" style="color: #003399">
-                <%: Html.LabelFor(model => model.Categoria.Codigo) %>
+                Categoria
             </div>
             <div class="editor-field">
                 <%: Html.TextBoxFor(model => model.Categoria.Codigo) %>

@@ -9,12 +9,13 @@ namespace AplicacionWebMVC.Models
     {
 
         public int Codigo { get; set; }
-        public String Nombre { get; set; }
-        public String Ruc { get; set; }
-        public String Direccion { get; set; }
-        public String Telefono { get; set; }
-        public String Fax { get; set; }
-        public List<Articulo> articulos { get; set; }
+        public string Nombre { get; set; }
+        public string Ruc { get; set; }
+        public string Direccion { get; set; }
+        public string Telefono { get; set; }
+        public string Fax { get; set; }
+        public string NombreContacto { get; set; }
+        public string TelefonoContacto { get; set; }
 
     }
 }
