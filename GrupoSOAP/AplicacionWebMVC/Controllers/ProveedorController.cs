@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AplicacionWebMVC.Models;
 
 namespace AplicacionWebMVC.Controllers
 {
@@ -13,7 +14,36 @@ namespace AplicacionWebMVC.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(Ini());
+        }
+
+        private List<Proveedor> Ini()
+        {
+            List<Proveedor> lstProveedor = new List<Proveedor>();
+            lstProveedor.Add(new Proveedor()
+            {
+                Codigo = 1, Nombre = "Proveedor 01", Ruc = "10000000000", Telefono = "1000000", 
+                Fax = "10000000", Direccion = "Av. 100", NombreContacto = "Contacto 01", TelefonoContacto = "10000001"
+            });
+            lstProveedor.Add(new Proveedor()
+            {
+                Codigo = 2, Nombre = "Proveedor 02", Ruc = "20000000000", Telefono = "2000000",
+                Fax = "20000000", Direccion = "Av. 200", NombreContacto = "Contacto 02", TelefonoContacto = "20000002"
+            });
+            lstProveedor.Add(new Proveedor()
+            {
+                Codigo = 3, Nombre = "Proveedor 03", Ruc = "30000000000", Telefono = "3000000",
+                Fax = "30000000", Direccion = "Av. 300", NombreContacto = "Contacto 03", TelefonoContacto = "30000003"
+            });
+
+            return lstProveedor;
+        }
+
+        private Proveedor obtenerProveedor(int id)
+        {
+            List<Proveedor> lstProveedor = Ini();
+            Proveedor o = lstProveedor.ElementAt(id-1);
+            return o;
         }
 
         //
@@ -21,7 +51,8 @@ namespace AplicacionWebMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            Proveedor model = obtenerProveedor(id);
+            return View(model);
         }
 
         //
@@ -55,7 +86,8 @@ namespace AplicacionWebMVC.Controllers
  
         public ActionResult Edit(int id)
         {
-            return View();
+            Proveedor model = obtenerProveedor(id);
+            return View(model);
         }
 
         //
@@ -81,7 +113,8 @@ namespace AplicacionWebMVC.Controllers
  
         public ActionResult Delete(int id)
         {
-            return View();
+            Proveedor model = obtenerProveedor(id);
+            return View(model);
         }
 
         //

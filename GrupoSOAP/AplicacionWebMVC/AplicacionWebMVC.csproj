@@ -103,6 +103,11 @@
     <Content Include="Views\Articulo\Details.aspx" />
     <Content Include="Views\Articulo\Edit.aspx" />
     <Content Include="Views\Articulo\Index.aspx" />
+    <Content Include="Views\Proveedor\Create.aspx" />
+    <Content Include="Views\Proveedor\Delete.aspx" />
+    <Content Include="Views\Proveedor\Details.aspx" />
+    <Content Include="Views\Proveedor\Edit.aspx" />
+    <Content Include="Views\Proveedor\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
