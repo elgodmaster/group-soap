@@ -6,7 +6,7 @@ using AppWS.Dominio;
 
 namespace AppWS.Persistencia
 {
-    public class ArticuloDAO : BaseDAO<Articulo, int, string>
+    public class ProveedorDAO : BaseDAO<Proveedor, int, string>
     {
     }
 }
