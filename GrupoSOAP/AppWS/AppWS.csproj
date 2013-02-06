@@ -66,7 +66,8 @@
     <Content Include="AdmProducto.svc" />
     <EmbeddedResource Include="Dominio\Articulo.hbm.xml" />
     <EmbeddedResource Include="Dominio\Categoria.hbm.xml" />
-    <Content Include="Dominio\Proveedor.hbm.xml" />
+    <Content Include="AdmProveedor.svc" />
+    <EmbeddedResource Include="Dominio\Proveedor.hbm.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -79,10 +80,14 @@
     <Compile Include="AdmProducto.svc.cs">
       <DependentUpon>AdmProducto.svc</DependentUpon>
     </Compile>
+    <Compile Include="AdmProveedor.svc.cs">
+      <DependentUpon>AdmProveedor.svc</DependentUpon>
+    </Compile>
     <Compile Include="Dominio\Proveedor.cs" />
     <Compile Include="IAdmProducto.cs" />
     <Compile Include="Dominio\Articulo.cs" />
     <Compile Include="Dominio\Categoria.cs" />
+    <Compile Include="IAdmProveedor.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\CategoriaDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
