@@ -70,14 +70,20 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticuloController.cs" />
+    <Compile Include="Controllers\CabOrdenCompraController.cs" />
+    <Compile Include="Controllers\DetOrdenCompraController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Articulo.cs" />
+    <Compile Include="Models\CabOrdenCompra.cs" />
     <Compile Include="Models\Categoria.cs" />
+    <Compile Include="Models\DetOrdenCompra.cs" />
+    <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Proveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\AdmProductoWS\Reference.cs">
@@ -103,6 +109,15 @@
     <Content Include="Views\Articulo\Details.aspx" />
     <Content Include="Views\Articulo\Edit.aspx" />
     <Content Include="Views\Articulo\Index.aspx" />
+    <Content Include="Views\CabOrdenCompra\Create.aspx" />
+    <Content Include="Views\CabOrdenCompra\Delete.aspx" />
+    <Content Include="Views\CabOrdenCompra\Edit.aspx" />
+    <Content Include="Views\CabOrdenCompra\Index.aspx" />
+    <Content Include="Views\Pedido\Create.aspx" />
+    <Content Include="Views\Pedido\Delete.aspx" />
+    <Content Include="Views\Pedido\Details.aspx" />
+    <Content Include="Views\Pedido\Edit.aspx" />
+    <Content Include="Views\Pedido\Index.aspx" />
     <Content Include="Views\Proveedor\Create.aspx" />
     <Content Include="Views\Proveedor\Delete.aspx" />
     <Content Include="Views\Proveedor\Details.aspx" />

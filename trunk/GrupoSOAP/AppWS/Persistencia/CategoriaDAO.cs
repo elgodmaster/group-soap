@@ -6,7 +6,7 @@ using AppWS.Dominio;
 
 namespace AppWS.Persistencia
 {
-    public class CategoriaDAO : BaseDAO<Categoria, int>
+    public class CategoriaDAO : BaseDAO<Categoria, int,string>
     {
     }
 }
