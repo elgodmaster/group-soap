@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using NHibernate;
+using NHibernate.Criterion;
 
 namespace AppWS.Persistencia
 {
-    public class BaseDAO <Entidad, Id>
+    public class BaseDAO <Entidad, Id, Criterio>
     {
         public Entidad Crear(Entidad entidad)
         {
@@ -22,6 +23,16 @@ namespace AppWS.Persistencia
             using (ISession sesion = NHibernateHelper.ObtenerSesion())
             {
                 return sesion.Get<Entidad>(id);
+            }
+        }
+
+        public int Encontrar(string criterio)
+        {
+            using (ISession sesion = NHibernateHelper.ObtenerSesion())
+            {
+                ICriteria criteria = sesion.CreateCriteria(typeof(Entidad));
+                criteria.Add(Restrictions.Eq("Ruc", criterio));
+                return criteria.List<Entidad>().Count();
             }
         }
         public Entidad Modificar(Entidad entidad)
