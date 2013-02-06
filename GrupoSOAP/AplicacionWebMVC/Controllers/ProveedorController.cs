@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AplicacionWebMVC.Models;
+using System.Text;
+using System.Net;
+using System.IO;
+using System.Web.Script.Serialization;
 
 namespace AplicacionWebMVC.Controllers
 {
@@ -71,8 +75,19 @@ namespace AplicacionWebMVC.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-
+                string postdata = "{\"Nombre\":\"" + collection["Nombre"] + "\",\"Ruc\":\"" + collection["Ruc"] + "\"Direccion\":\"" + collection["Direccion"] + "\",\"Telefono\":\"" + collection["Telefono"] + "\"Fax\":\"" + collection["Fax"] + "\",\"NombreContacto\":\"" + collection["NombreContacto"] + "\",\"TelefonoContacto\":\"" + collection["TelefonoContacto"] + "\"}";
+                byte[] data = Encoding.UTF8.GetBytes(postdata);
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:1439/AdmProveedor.svc/Proveedores");
+                req.Method = "POST";
+                req.ContentLength = data.Length;
+                req.ContentType = "application/json";
+                var reqStream = req.GetRequestStream();
+                reqStream.Write(data, 0, data.Length);
+                var res = (HttpWebResponse)req.GetResponse();
+                StreamReader reader = new StreamReader(res.GetResponseStream());
+                string proveedorJson = reader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Proveedor proveedorCreado = js.Deserialize<Proveedor>(proveedorJson);
                 return RedirectToAction("Index");
             }
             catch
