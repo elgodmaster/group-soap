@@ -7,6 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using AppWS.Dominio;
 using AppWS.Persistencia;
+using System.Net;
 
 namespace AppWS
 {
@@ -19,6 +20,16 @@ namespace AppWS
 
         public Proveedor CrearProveedor(Proveedor proveedorACrear)
         {
+            Proveedor existe = ProveedorDAO.EncontrarProveedor(proveedorACrear);
+            if (existe != null)
+            {
+                throw new WebFaultException<Error>(
+                    new Error() {
+                        Codigo = "ERR01",
+                        Mensaje = "El Ruc o el Nombre del proveedor ingresado ya existe!"
+                    }, HttpStatusCode.InternalServerError);
+
+            }
             return ProveedorDAO.Crear(proveedorACrear);
         }
 

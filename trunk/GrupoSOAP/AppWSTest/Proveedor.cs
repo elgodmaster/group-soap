@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace AppWSTest
 {
@@ -15,5 +16,14 @@ namespace AppWSTest
         public string Fax { get; set; }
         public string NombreContacto { get; set; }
         public string TelefonoContacto { get; set; }
+    }
+
+    [DataContract]
+    public class Error
+    {
+        [DataMember]
+        public string Codigo { get; set; }
+        [DataMember]
+        public string Mensaje { get; set; }
     }
 }

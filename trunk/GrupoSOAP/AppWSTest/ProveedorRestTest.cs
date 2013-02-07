@@ -15,8 +15,7 @@ namespace AppWSTest
         [TestMethod]
         public void CRUDTestCrear()
         {
-
-            string postdata = "{\"Nombre\":\"Juan\",\"Ruc\":\"12457859\",\"Direccion\":\"los olivos\",\"Telefono\":\"4578598\",\"NombreContacto\":\"Marcos\",\"TelefonoContacto\":\"5457859\"}";
+            string postdata = "{\"Nombre\":\"Proveedor 06\",\"Ruc\":\"12312312366\",\"Direccion\":\"los olivos\",\"Telefono\":\"4578598\",\"NombreContacto\":\"Marcos\",\"TelefonoContacto\":\"5457859\"}";
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:2518/AdmProveedor.svc/Proveedores");
             req.Method = "POST";
@@ -24,13 +23,26 @@ namespace AppWSTest
             req.ContentType = "application/json";
             var reqStream = req.GetRequestStream();
             reqStream.Write(data, 0, data.Length);
-            var res = (HttpWebResponse) req.GetResponse();
-            StreamReader reader = new StreamReader(res.GetResponseStream());
-            string proveedorjson = reader.ReadToEnd();
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            Proveedor proveedorCreado = js.Deserialize<Proveedor>(proveedorjson);
-            Assert.AreEqual("Nombre", proveedorCreado.Nombre);
+            HttpWebResponse res = null;
 
+            try
+            {
+                res = (HttpWebResponse)req.GetResponse();
+                StreamReader reader = new StreamReader(res.GetResponseStream());
+                string proveedorjson = reader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Proveedor proveedorCreado = js.Deserialize<Proveedor>(proveedorjson);
+                Assert.AreEqual("Proveedor 06", proveedorCreado.Nombre);
+            }
+            catch (WebException e)
+            {
+                HttpWebResponse resError = (HttpWebResponse)e.Response;
+                StreamReader readerError = new StreamReader(resError.GetResponseStream());
+                string error = readerError.ReadToEnd();
+                JavaScriptSerializer jsError = new JavaScriptSerializer();
+                string errorObtenido = jsError.Deserialize<string>(error);
+                Assert.AreEqual("El Ruc o el Nombre del proveedor ingresado ya existe!", errorObtenido);
+            }
         }
 
         [TestMethod]
@@ -49,8 +61,8 @@ namespace AppWSTest
             StreamReader reader = new StreamReader(res.GetResponseStream());
             string proveedorjson = reader.ReadToEnd();
             JavaScriptSerializer js = new JavaScriptSerializer();
-            Proveedor proveedorCreado = js.Deserialize<Proveedor>(proveedorjson);
-            Assert.AreEqual("PROVEEDOR", proveedorCreado.Nombre);
+            Proveedor proveedorModificado = js.Deserialize<Proveedor>(proveedorjson);
+            Assert.AreEqual("PROVEEDOR", proveedorModificado.Nombre);
 
         }
 
@@ -67,7 +79,7 @@ namespace AppWSTest
             string proveedorjson = reader.ReadToEnd();
             JavaScriptSerializer js = new JavaScriptSerializer();
             List<Proveedor> list = js.Deserialize<List<Proveedor>>(proveedorjson);
-            Assert.AreEqual(list.Count(), 2);
+            Assert.AreEqual(list.Count(), 4);
 
         }
 
