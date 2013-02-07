@@ -6,13 +6,13 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Edit</h2>
+    <h2 style="color: #003399">Editar Proveedor</h2>
 
     <% using (Html.BeginForm()) {%>
         <%: Html.ValidationSummary(true) %>
         
         <fieldset>
-            <legend>Fields</legend>
+            <legend style="color: #800000">Campos</legend>
             
             <div class="editor-label">
                 <%: Html.LabelFor(model => model.Codigo) %>
@@ -61,16 +61,31 @@
                 <%: Html.TextBoxFor(model => model.Fax) %>
                 <%: Html.ValidationMessageFor(model => model.Fax) %>
             </div>
-            
+
+            <div class="editor-label">
+                <%: Html.LabelFor(model => model.NombreContacto) %>
+            </div>
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.NombreContacto) %>
+                <%: Html.ValidationMessageFor(model => model.NombreContacto) %>
+            </div>
+
+            <div class="editor-label">
+                <%: Html.LabelFor(model => model.TelefonoContacto) %>
+            </div>            
+            <div class="editor-field">
+                <%: Html.TextBoxFor(model => model.TelefonoContacto) %>
+                <%: Html.ValidationMessageFor(model => model.TelefonoContacto) %>
+            </div>            
             <p>
-                <input type="submit" value="Save" />
+                <input type="submit" value="Guardar" />
             </p>
         </fieldset>
 
     <% } %>
 
     <div>
-        <%: Html.ActionLink("Back to List", "Index") %>
+        <%: Html.ActionLink("Regresar a la Lista", "Index") %>
     </div>
 
 </asp:Content>

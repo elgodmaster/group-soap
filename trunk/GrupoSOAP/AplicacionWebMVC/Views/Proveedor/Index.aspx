@@ -10,7 +10,6 @@
 
     <table>
         <tr>
-            <th></th>
             <th>
                 Codigo
             </th>
@@ -29,17 +28,19 @@
             <th>
                 Fax
             </th>
+            <th>
+                Nombre Contacto
+            </th>
+            <th>
+                Telefono Contacto
+            </th>
+            <td style="font-weight: bold; text-align:center">Acciones</td>
         </tr>
 
     <% foreach (var item in Model) { %>
     
         <tr>
-            <td>
-                <%: Html.ActionLink("Edit", "Edit", new { id = item.Codigo })%> |
-                <%: Html.ActionLink("Details", "Details", new { id = item.Codigo })%> |
-                <%: Html.ActionLink("Delete", "Delete", new { id = item.Codigo })%>
-            </td>
-            <td>
+            <td style="text-align:center">
                 <%: item.Codigo %>
             </td>
             <td>
@@ -57,6 +58,16 @@
             <td>
                 <%: item.Fax %>
             </td>
+            <td>
+                <%: item.NombreContacto %>
+            </td>
+            <td>
+                <%: item.TelefonoContacto %>
+            </td>
+            <td>
+                <%: Html.ActionLink("Editar", "Edit", new { id = item.Codigo })%> |
+                <%: Html.ActionLink("Detalle", "Details", new { id = item.Codigo })%>
+            </td>
         </tr>
     
     <% } %>
@@ -64,7 +75,7 @@
     </table>
 
     <p>
-        <%: Html.ActionLink("Create New", "Create") %>
+        <%: Html.ActionLink("Crear", "Create") %>
     </p>
 
 </asp:Content>

@@ -160,7 +160,7 @@ ul#menu li a
     text-decoration: none;
     line-height: 2.8em;
     background-color: #e8eef4;
-    color: #034af3;
+    color: #5c87b2;
 }
 
 ul#menu li a:hover
@@ -342,4 +342,9 @@ div#title
 .tri-state
 {
     width: 6em;
+}
+
+.display-label
+{
+    font-weight: bold;
 }

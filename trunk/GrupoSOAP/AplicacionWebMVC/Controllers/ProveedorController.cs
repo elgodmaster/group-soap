@@ -8,6 +8,7 @@ using System.Text;
 using System.Net;
 using System.IO;
 using System.Web.Script.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace AplicacionWebMVC.Controllers
 {
@@ -18,7 +19,20 @@ namespace AplicacionWebMVC.Controllers
 
         public ActionResult Index()
         {
-            return View(Ini());
+            return View(Listar());
+        }
+
+        private List<Proveedor> Listar()
+        {
+            List<Proveedor> lstProveedor;
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:2518/AdmProveedor.svc/Proveedores");
+            req.Method = "LIST";
+            var res = (HttpWebResponse)req.GetResponse();
+            StreamReader reader = new StreamReader(res.GetResponseStream());
+            string proveedorJson = reader.ReadToEnd();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            lstProveedor = js.Deserialize<List<Proveedor>>(proveedorJson);
+            return lstProveedor;
         }
 
         private List<Proveedor> Ini()
@@ -45,8 +59,14 @@ namespace AplicacionWebMVC.Controllers
 
         private Proveedor obtenerProveedor(int id)
         {
-            List<Proveedor> lstProveedor = Ini();
-            Proveedor o = lstProveedor.ElementAt(id-1);
+            Proveedor o;
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:2518/AdmProveedor.svc/Proveedores/"+id);
+            req.Method = "GET";
+            var res = (HttpWebResponse)req.GetResponse();
+            StreamReader reader = new StreamReader(res.GetResponseStream());
+            string proveedorJson = reader.ReadToEnd();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            o = js.Deserialize<Proveedor>(proveedorJson);
             return o;
         }
 
@@ -113,10 +133,22 @@ namespace AplicacionWebMVC.Controllers
         {
             try
             {
-                // TODO: Add update logic here
- 
+                string postdata = "{\"Codigo\":\"" + collection["Codigo"] + "\",\"Nombre\":\"" + collection["Nombre"] + "\",\"Ruc\":\"" + collection["Ruc"] + "\",\"Direccion\":\"" + collection["Direccion"] + "\",\"Telefono\":\"" + collection["Telefono"] + "\",\"Fax\":\"" + collection["Fax"] + "\",\"NombreContacto\":\"" + collection["NombreContacto"] + "\",\"TelefonoContacto\":\"" + collection["TelefonoContacto"] + "\"}";
+
+                byte[] data = Encoding.UTF8.GetBytes(postdata);
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:2518/AdmProveedor.svc/Proveedores");
+                req.Method = "PUT";
+                req.ContentLength = data.Length;
+                req.ContentType = "application/json";
+                var reqStream = req.GetRequestStream();
+                reqStream.Write(data, 0, data.Length);
+                var res = (HttpWebResponse)req.GetResponse();
+                StreamReader reader = new StreamReader(res.GetResponseStream());
+                string proveedorJson = reader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Proveedor proveedorModificado = js.Deserialize<Proveedor>(proveedorJson);
                 return RedirectToAction("Index");
-            }
+             }
             catch
             {
                 return View();
