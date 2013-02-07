@@ -112,6 +112,7 @@ namespace AplicacionWebMVC.Controllers
             }
             catch
             {
+
                 return View();
             }
         }

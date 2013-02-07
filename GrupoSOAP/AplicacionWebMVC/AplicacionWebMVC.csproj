@@ -83,6 +83,7 @@
     <Compile Include="Models\CabOrdenCompra.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\DetOrdenCompra.cs" />
+    <Compile Include="Models\Error.cs" />
     <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Proveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
