@@ -19,6 +19,7 @@ namespace AppWS.Persistencia
                 //criteria.Add(Restrictions.Eq("Nombre", o.Nombre));
                 //criteria.Add(Restrictions.Eq("NombreContacto", o.NombreContacto));
                 //criteria.Add(Restrictions.Eq("TelefonoContacto", o.TelefonoContacto));
+
                 return criteria.List<Proveedor>().ElementAt(0);
             }
         }

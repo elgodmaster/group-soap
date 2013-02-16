@@ -15,7 +15,17 @@ namespace AppWS
     public class AdmProveedor : IAdmProveedor
     {
 
-        private ProveedorDAO ProveedorDAO = new ProveedorDAO();
+        private ProveedorDAO proveedorDAO = null;
+
+        private ProveedorDAO ProveedorDAO
+        {
+            get
+            {
+                if (proveedorDAO == null)
+                    proveedorDAO = new ProveedorDAO();
+                return proveedorDAO;
+            }
+        }
 
 
         public Proveedor CrearProveedor(Proveedor proveedorACrear)

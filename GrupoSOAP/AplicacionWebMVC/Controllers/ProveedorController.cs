@@ -95,7 +95,7 @@ namespace AplicacionWebMVC.Controllers
         {
             try
             {
-                string postdata = "{\"Nombre\":\"" + collection["Nombre"] + "\",\"Ruc\":\"" + collection["Ruc"] + "\",\"Direccion\":\"" + collection["Direccion"] + "\",\"Telefono\":\"" + collection["Telefono"] +"\",\"Fax\":\"" + collection["Fax"] + "\",\"NombreContacto\":\"" + collection["NombreContacto"] + "\",\"TelefonoContacto\":\"" + collection["TelefonoContacto"] + "\"}";
+                string postdata = "{\"Nombre\":\"" + collection["Nombre"] + "\",\"Ruc\":\"" + collection["Ruc"] + "\",\"Direccion\":\"" + collection["Direccion"] + "\",\"Telefono\":\"" + collection["Telefono"] + "\",\"Fax\":\"" + collection["Fax"] + "\",\"NombreContacto\":\"" + collection["NombreContacto"] + "\",\"TelefonoContacto\":\"" + collection["TelefonoContacto"] + "\"}";
                 byte[] data = Encoding.UTF8.GetBytes(postdata);
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:2518/AdmProveedor.svc/Proveedores");
                 req.Method = "POST";
