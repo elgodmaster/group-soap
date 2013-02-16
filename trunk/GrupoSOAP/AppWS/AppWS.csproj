@@ -83,6 +83,7 @@
     <Compile Include="AdmProveedor.svc.cs">
       <DependentUpon>AdmProveedor.svc</DependentUpon>
     </Compile>
+    <Compile Include="Dominio\Aviso.cs" />
     <Compile Include="Dominio\Error.cs" />
     <Compile Include="Dominio\Proveedor.cs" />
     <Compile Include="IAdmProducto.cs" />
