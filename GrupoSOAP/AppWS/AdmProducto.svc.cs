@@ -7,22 +7,23 @@ using System.ServiceModel.Web;
 using System.Text;
 using AppWS.Dominio;
 using AppWS.Persistencia;
+using System.Net;
 
 namespace AppWS
 {
 
     public class AdmProducto : IAdmProducto
     {
-        private ArticuloDAO productoDAO = null;
+        private ArticuloDAO articuloDAO = new ArticuloDAO();
         private CategoriaDAO categoriaDAO = null;
 
         private ArticuloDAO ProductoDAO
         {
             get
             {
-                if (productoDAO == null)
-                    productoDAO = new ArticuloDAO();
-                return productoDAO;
+                if (articuloDAO == null)
+                    articuloDAO = new ArticuloDAO();
+                return articuloDAO;
             }
         }
 
@@ -35,19 +36,34 @@ namespace AppWS
                 return categoriaDAO;
             }
         }
-
+        
         public Articulo crear(string nombre, string descripcion, int categoria)
         {
+           
             Categoria oCategoria = CategoriaDAO.Obtener(categoria);
+
             Articulo o = new Articulo()
             {
                 Nombre = nombre,
                 Descripcion = descripcion,
                 Categoria = oCategoria
             };
-            return ProductoDAO.Crear(o);
-        }
+            
+            if (articuloDAO.EncontrarArticulo(o) > 0)
+            {
+                throw new WebFaultException<Error>(
+                    new Error()
+                    {
+                        Codigo = "ERR01",
+                        Mensaje = "El articulo ingresado ya existe!"
+                    }, HttpStatusCode.InternalServerError);
 
+            }
+
+            return ProductoDAO.Crear(o);       
+
+        }
+        
         public Articulo modificar(int codigo, string nombre, string descripcion, int categoria)
         {
             Categoria oCategoria = CategoriaDAO.Obtener(categoria);

@@ -77,15 +77,20 @@ namespace AplicacionWebMVC.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection) //Recibe los datos del formulario y realiza creacion
         {
+            //string mensaje = null;
+
             try
             {
                 AdmProductoWS.Articulo o = 
                     proxyProducto.crear(collection["Nombre"], collection["Descripcion"], int.Parse(collection["Categoria.Codigo"]));
 
+                //mensaje = "Articulo registrado correctamente";
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                //Error cogido en AdmProducto.svc.cs debe mostrarse aqui variable par enviar la vista
+                //mensaje = e.Message;
                 return View();
             }
         }

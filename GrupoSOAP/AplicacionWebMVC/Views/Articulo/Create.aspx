@@ -45,7 +45,6 @@
                 <%: Html.TextBoxFor(model => model.Categoria.Codigo) %>
                 <%: Html.ValidationMessageFor(model => model.Categoria.Codigo) %>
             </div>
-            
             <p>
                 <input type="submit" value="Crear" />
             </p>
