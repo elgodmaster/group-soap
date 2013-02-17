@@ -8,6 +8,7 @@ using System.Text;
 using AppWS.Dominio;
 using AppWS.Persistencia;
 using System.Net;
+using System.Messaging;
 
 namespace AppWS
 {
@@ -27,16 +28,32 @@ namespace AppWS
             }
         }
 
+        string rutaCola = @".\private$\grupoSOAP";
 
         public Proveedor CrearProveedor(Proveedor proveedorACrear)
         {
             Proveedor existe = ProveedorDAO.EncontrarProveedor(proveedorACrear);
             if (existe != null)
             {
+                // Cada vez que ocurra un problema al registrar un proveedor que envíe un mensaje al admin
+                if (!MessageQueue.Exists(rutaCola))
+                    MessageQueue.Create(rutaCola);
+                MessageQueue cola = new MessageQueue(rutaCola);
+                Message mensaje = new Message();
+                mensaje.Label = "ERR";
+                mensaje.Body = new Error()
+                {
+                    Codigo = "ERR01",
+                    Mensaje = "Hubo un error al insertar el proveedor " + proveedorACrear.Ruc + "."
+                };
+                cola.Send(mensaje);
+                // verificar la existencia del mensaje en la cola.
+
+
                 throw new WebFaultException<Error>(
                     new Error() {
                         Codigo = "ERR01",
-                        Mensaje = "El Ruc o el Nombre del proveedor ingresado ya existe!"
+                        Mensaje = "El proveedor ingresado ya existe!"
                     }, HttpStatusCode.InternalServerError);
 
             }
