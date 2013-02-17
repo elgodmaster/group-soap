@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"  
+                   assembly="AppWS"
+                   namespace="AppWS.Dominio"
+                   default-lazy="false">
+	<class name="Orden" table="t_cabOC">
+		<id name="Codigo" column="codigo">
+			<generator class="increment"/>
+		</id>
+		<property name="Fecha" column="fecha" />
+		<property name="Proveedor" column="proveedor" />
+		<property name="Observacion" column="observacion" />
+	</class>
+</hibernate-mapping>
