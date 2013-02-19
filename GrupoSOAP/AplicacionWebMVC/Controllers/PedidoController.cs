@@ -9,7 +9,9 @@ namespace AplicacionWebMVC.Controllers
 {
     public class PedidoController : Controller
     {
+        AdmPedidoWS.AdmPedidoClient proxyPedido = new AdmPedidoWS.AdmPedidoClient();
 
+        /*
         private List<Pedido> CrearPedidos()
         {
 
@@ -24,7 +26,7 @@ namespace AplicacionWebMVC.Controllers
 
             return pedidos;
         }
-
+        */
 
         private Pedido ObtenerPedido(int NPedido)
         {
@@ -44,11 +46,26 @@ namespace AplicacionWebMVC.Controllers
 
         public ActionResult Index()
         {
-            if (Session["pedidos"] == null)
-                Session["pedidos"] = CrearPedidos();
+            List<Pedido> model = new List<Pedido>();
+            AdmPedidoWS.Pedido[] lista = proxyPedido.listar();
 
-            List<Pedido> model = (List<Pedido>)Session["pedidos"];
+            foreach (AdmPedidoWS.Pedido o in lista)
+            {
+                model.Add(new Pedido()
+                {
+                    NPedido = o.NPedido,
+                    Usuario = o.Usuario,
+                    FechaRegistro = o.FechaRegistro,
+                    Prioridad = o.Prioridad
+                });
+            }
+
             return View(model);
+            //if (Session["pedidos"] == null)
+            //    Session["pedidos"] = CrearPedidos();
+
+            //List<Pedido> model = (List<Pedido>)Session["pedidos"];
+            //return View(model);
         }
 
 
@@ -75,23 +92,22 @@ namespace AplicacionWebMVC.Controllers
             try
             {
 
-                List<Pedido> Pedidos = (List<Pedido>)Session["pedidos"];
-                Pedidos.Add(new Pedido()
-                {
-                    NPedido = int.Parse(collection["NPedido"]),
-                    Usuario = collection["Usuario"],
-                    FechaRegistro = collection["FechaRegistro"],
-                    Prioridad = collection["Prioridad"]
-                    //Articulos = new Articulo()
-                    //{
-                    //    Codigo = int.Parse(collection["Articulos.Codigo"]),
-                    //    Nombre = collection["Articulos.Nombre"]
-
-                    //}
-
-                });
+                AdmPedidoWS.Pedido o =
+                    proxyPedido.crear(collection["Usuario"], collection["FechaRegistro"], collection["Prioridad"]);
 
                 return RedirectToAction("Index");
+
+                //List<Pedido> Pedidos = (List<Pedido>)Session["pedidos"];
+                //Pedidos.Add(new Pedido()
+                //{
+                //    NPedido = int.Parse(collection["NPedido"]),
+                //    Usuario = collection["Usuario"],
+                //    FechaRegistro = collection["FechaRegistro"],
+                //    Prioridad = collection["Prioridad"]
+    
+                //});
+
+                //return RedirectToAction("Index");
             }
             catch
             {

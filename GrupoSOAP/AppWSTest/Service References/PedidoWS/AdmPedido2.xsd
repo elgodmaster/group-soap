@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AppWS.Dominio" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AppWS.Dominio" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Pedido">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FechaRegistro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NPedido" type="xs:int" />
+      <xs:element minOccurs="0" name="Prioridad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Pedido" nillable="true" type="tns:Pedido" />
+  <xs:complexType name="ArrayOfPedido">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pedido" nillable="true" type="tns:Pedido" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPedido" nillable="true" type="tns:ArrayOfPedido" />
+  <xs:complexType name="Pedido_det">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Articulo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+      <xs:element minOccurs="0" name="CodigoArticulo" type="xs:int" />
+      <xs:element minOccurs="0" name="NPedido" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Pedido_det" nillable="true" type="tns:Pedido_det" />
+  <xs:complexType name="ArrayOfPedido_det">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pedido_det" nillable="true" type="tns:Pedido_det" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPedido_det" nillable="true" type="tns:ArrayOfPedido_det" />
+</xs:schema>
