@@ -38,8 +38,8 @@ namespace AppWSTest
             PedidoWS.AdmPedidoClient proxy = new PedidoWS.AdmPedidoClient();
             //Asesor asesorEnviado = new Asesor();
 
-            Pedido_det pedidodetEsperado = proxy.creardet(1,2,"Producto01", 5);
-            Assert.AreEqual(pedidodetEsperado.Articulo, "Producto01");
+            Pedido_det pedidodetEsperado = proxy.creardet(1,1,"Producto001", 5);
+            Assert.AreEqual(pedidodetEsperado.Articulo, "Producto001");
         }
 
 
