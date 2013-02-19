@@ -87,6 +87,11 @@
     <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Proveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\AdmPedidoWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\AdmProductoWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -95,6 +100,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <None Include="Service References\AdmPedidoWS\AdmPedido.wsdl" />
+    <None Include="Service References\AdmPedidoWS\AdmPedido.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdmPedidoWS\AdmPedido1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdmPedidoWS\AdmPedido2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdmPedidoWS\AplicacionWebMVC.AdmPedidoWS.Pedido.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdmPedidoWS\AplicacionWebMVC.AdmPedidoWS.Pedido_det.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\AdmProductoWS\AdmProducto.disco" />
     <None Include="Service References\AdmProductoWS\AplicacionWebMVC.AdmProductoWS.Articulo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -102,6 +123,13 @@
     <None Include="Service References\AdmProductoWS\configuration91.svcinfo" />
     <None Include="Service References\AdmProductoWS\configuration.svcinfo" />
     <None Include="Service References\AdmProductoWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\AdmPedidoWS\AdmPedido.disco" />
+    <None Include="Service References\AdmPedidoWS\configuration91.svcinfo" />
+    <None Include="Service References\AdmPedidoWS\configuration.svcinfo" />
+    <None Include="Service References\AdmPedidoWS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -166,6 +194,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AdmPedidoWS\" />
     <WCFMetadataStorage Include="Service References\AdmProductoWS\" />
   </ItemGroup>
   <ItemGroup>

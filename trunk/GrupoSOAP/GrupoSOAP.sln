@@ -15,6 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{6749174A-E42
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWSTest", "AppWSTest\AppWSTest.csproj", "{B58F1AED-73F0-4428-B0FE-CF6F6F85BAFE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2CC4D850-8E33-4D5F-BB5D-2D7AD2768CF8} = {2CC4D850-8E33-4D5F-BB5D-2D7AD2768CF8}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
