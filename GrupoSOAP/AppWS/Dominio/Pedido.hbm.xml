@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="AppWS"
+                   namespace="AppWS.Dominio"
+                   default-lazy="false">
+	<class name="Pedido" table="t_pedido">
+		<id name="NPedido" column="npedido">
+			<generator class="increment"/>
+		</id>
+		<property name="Usuario" column="usuario" />
+		<property name="FechaRegistro" column="fecharegistro" />
+		<property name="Prioridad" column="prioridad" />
+	</class>
+</hibernate-mapping> 

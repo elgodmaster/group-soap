@@ -9,7 +9,7 @@ namespace AppWS.Persistencia
     {
         public static string ObtenerCadena()
         {
-            return "Data Source=GIANI\\SQLEXPRESS;Initial Catalog=BD_WS;Integrated Security=SSPI;";
+            return "Data Source=(local);Initial Catalog=BD_WS;Integrated Security=SSPI;";
         }
     }
 }
