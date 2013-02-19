@@ -12,11 +12,11 @@ namespace AppWS.Dominio
         [DataMember]
         public int NPedido { get; set; }
         [DataMember]
-        public String Usuario { get; set; }
+        public string Usuario { get; set; }
         [DataMember]
-        public String FechaRegistro { get; set; }
+        public string FechaRegistro { get; set; }
         [DataMember]
-        public String Prioridad { get; set; }
+        public string Prioridad { get; set; }
 
     }
 }
